@@ -29,7 +29,7 @@ function numericFromNamed(sql, parameters) {
 
   var out = {};
   out.sql = interpolatedSql;
-  out.parameters = fillValues;
+  out.values = fillValues;
 
   return out;
 }
@@ -39,11 +39,11 @@ function patch (client) {
   originalQuery = originalQuery.bind(client);
 
   var patchedQuery = function(config, values, callback) {
-    if (_.isArray(config)) {
+    if (_.isArray(values)) {
       return originalQuery(config, values, callback);
     } else {
       var reparameterized = numericFromNamed(config, values);
-      return originalQuery(reparameterized.sql, reparameterized.parameters, callback);
+      return originalQuery(reparameterized.sql, reparameterized.values, callback);
     }
   };
 
