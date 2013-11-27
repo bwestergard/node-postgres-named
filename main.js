@@ -22,7 +22,7 @@ function numericFromNamed(sql, parameters) {
 
   var interpolatedSql = _.reduce(fillTokens, function (partiallyInterpolated, token, index) {
     var replaceAllPattern = new RegExp('\\$' + fillTokens[index], "g");
-    return partiallyInterpolated.replace(replaceAllPattern, '$' + index);
+    return partiallyInterpolated.replace(replaceAllPattern, '$' + (index+1)); // PostGreSQL parameters are inexplicably 1-index.
   }, sql);
 
   var out = {};
@@ -32,4 +32,20 @@ function numericFromNamed(sql, parameters) {
   return out;
 }
 
-module.exports.numericFromNamed = numericFromNamed;
+function patch (client) {
+  var originalQuery = client.query;
+  originalQuery = originalQuery.bind(client)
+
+  var patchedQuery = function(config, values, callback) {
+    if (_.isArray(config)) {
+      return originalQuery(config, values, callback);
+    } else {
+      var reparameterized = numericFromNamed(config, values);
+      return originalQuery(reparameterized.sql, reparameterized.parameters, callback);
+    }
+  };
+
+  client.query = patchedQuery;
+}
+
+module.exports.patch = patch;
