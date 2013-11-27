@@ -1,0 +1,27 @@
+{
+  "name": "node-postgres-named",
+  "version": "0.0.1",
+  "private": false,
+  "main": "./main"
+  "engines": {
+    "node": "~0.10.21",
+    "npm": "~1.3.11"
+  },
+  "dependencies": {
+    "lodash": "~2.3.0"
+  },
+  "devDependencies": {
+    "jshint": "git+https://github.com/apechimp/jshint.git",
+    "mocha": "~1.14.0",
+    "should": "~2.1.0",
+    "supertest": "0.8.x",
+    "chocolate-factory": "0.0.3"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha",
+    "test-watch": "./node_modules/mocha/bin/mocha --watch",
+    "test-debug": "./node_modules/mocha/bin/mocha debug",
+    "lint": "./node_modules/jshint/bin/jshint .",
+    "lint-tc": "./node_modules/jshint/bin/jshint --reporter teamcity ."
+  }
+}
