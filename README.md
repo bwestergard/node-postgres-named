@@ -1,6 +1,9 @@
 node-postgres-named
 ===================
 
+Synopsis
+--------
+
 Want to use postgres with node? [node-postgres](https://github.com/brianc/node-postgres) has you covered.
 
 Want [named parameters](https://github.com/brianc/node-postgres/issues/268)? Well, postgres itself doesn't support them, and [brianc](https://github.com/brianc) has sagely opted to keep his library small and close to the postgres specification.
@@ -40,3 +43,8 @@ named.patch(client);
 ```
 
 Now both of the above call styles (with a list of values, or a dictionary of named parameters) will work.
+
+Shout Out
+---------
+
+Big ups to [Mike "ApeChimp" Atkins](https://github.com/apechimp) for the suggested implemention.
