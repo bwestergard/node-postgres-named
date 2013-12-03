@@ -49,11 +49,18 @@ describe('node-postgres-named', function () {
   });
 
   describe('Monkeypatched Dispatch', function () {
-    it('Standard call goes through unchanged', function () {
+    it('Call with original signature results in unchanged call to original function', function () {
       var sql = "SELECT name FORM person WHERE name = $1 AND tenure <= $2 AND age <= $3";
       var values = ['Ursus Oestergardii', 3, 24];
       var callback = function () { };
       var results = client.query(sql, values, callback);
+      assert.equal(results.sql, sql);
+      assert.deepEqual(results.values, values);
+      assert.equal(callback, callback);
+    });
+    it('Call with no values results in unchanged call to original function', function () {
+      var sql = "SELECT name FORM person WHERE name = $1 AND tenure <= $2 AND age <= $3";
+      var results = client.query(sql);
       assert.equal(results.sql, sql);
       assert.deepEqual(results.values, values);
       assert.equal(callback, callback);
