@@ -62,8 +62,8 @@ describe('node-postgres-named', function () {
       var sql = "SELECT name FORM person WHERE name = $1 AND tenure <= $2 AND age <= $3";
       var results = client.query(sql);
       assert.equal(results.sql, sql);
-      assert.deepEqual(results.values, values);
-      assert.equal(callback, callback);
+      assert.strictEqual(results.values, undefined);
+      assert.strictEqual(results.callback, undefined);
     });
     it('Named parameter call dispatched correctly', function () {
       var sql = "SELECT name FORM person WHERE name = $name AND tenure <= $tenure AND age <= $age";

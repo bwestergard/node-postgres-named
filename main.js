@@ -39,11 +39,11 @@ function patch (client) {
   originalQuery = originalQuery.bind(client);
 
   var patchedQuery = function(config, values, callback) {
-    if (_.isArray(values)) {
-      return originalQuery(config, values, callback);
-    } else {
+    if (_.isPlainObject(values)) {
       var reparameterized = numericFromNamed(config, values);
       return originalQuery(reparameterized.sql, reparameterized.values, callback);
+    } else {
+      return originalQuery(config, values, callback);
     }
   };
 
