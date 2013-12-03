@@ -1,3 +1,4 @@
+/* globals it: false, describe: false */
 var assert = require("assert");
 var chai = require("chai");
 var named = require("../main.js");
@@ -5,7 +6,7 @@ var named = require("../main.js");
 // Dummy Client class for testing purposes. No methods except query, which returns its arguments
 
 function Client() {
-};
+}
 
 Client.prototype.query = function(sql, values, callback) {
   var out = {};

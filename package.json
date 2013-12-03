@@ -15,18 +15,14 @@
     "url": "https://github.com/bwestergard/node-postgres-named.git"
   },
   "devDependencies": {
-    "jshint": "git+https://github.com/apechimp/jshint.git",
     "mocha": "~1.14.0",
     "chai": "~1.8.1",
-    "should": "~2.1.0",
-    "supertest": "0.8.x",
-    "chocolate-factory": "0.0.3"
+    "jshint": "~2.3.0"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
     "test-watch": "./node_modules/mocha/bin/mocha --watch",
     "test-debug": "./node_modules/mocha/bin/mocha debug",
-    "lint": "./node_modules/jshint/bin/jshint .",
-    "lint-tc": "./node_modules/jshint/bin/jshint --reporter teamcity ."
+    "lint": "./node_modules/jshint/bin/jshint ."
   }
 }
