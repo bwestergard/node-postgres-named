@@ -1,6 +1,3 @@
-node-postgres-named
-===================
-
 Synopsis
 --------
 

@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var tokenPattern = /\$[a-zA-Z]([a-zA-Z0-9]*)\b/g;
+var tokenPattern = /\$[a-zA-Z]([a-zA-Z0-9_]*)\b/g;
 
 function numericFromNamed(sql, parameters) {
   var fillableTokens = Object.keys(parameters);
@@ -20,7 +20,8 @@ function numericFromNamed(sql, parameters) {
     throw new Error("Missing Parameters: " + missing);
   }
 
-  var interpolatedSql = _.reduce(fillTokens, function (partiallyInterpolated, token, index) {
+  var interpolatedSql = _.reduce(fillTokens,
+  function (partiallyInterpolated, token, index) {
     var replaceAllPattern = new RegExp('\\$' + fillTokens[index], "g");
     return partiallyInterpolated
       .replace(replaceAllPattern,
@@ -41,13 +42,16 @@ function patch (client) {
   var patchedQuery = function(config, values, callback) {
     if (_.isPlainObject(values)) {
       var reparameterized = numericFromNamed(config, values);
-      return originalQuery(reparameterized.sql, reparameterized.values, callback);
+      return originalQuery(reparameterized.sql, reparameterized.values,
+        callback);
     } else {
       return originalQuery(config, values, callback);
     }
   };
 
   client.query = patchedQuery;
+
+  return client;
 }
 
 module.exports.patch = patch;
