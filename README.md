@@ -11,7 +11,7 @@ Go from this...
 
 ```javascript
 
-client.query("SELECT name FORM person WHERE name = $1 AND tenure <= $2 AND age <= $3",
+client.query("SELECT name FROM person WHERE name = $1 AND tenure <= $2 AND age <= $3",
              ['Ursus', 2.5, 24],
              function (results) { console.log(results); });
              
@@ -21,7 +21,7 @@ to this...
 
 ```javascript
 
-client.query("SELECT name FORM person WHERE name = $name AND tenure <= $tenure AND age <= $age",
+client.query("SELECT name FROM person WHERE name = $name AND tenure <= $tenure AND age <= $age",
              {'name': 'Ursus', "tenure": 2.5, "age": 24},
              function (results) { console.log(results); });
      
