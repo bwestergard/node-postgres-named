@@ -27,6 +27,8 @@ client.query("SELECT name FROM person WHERE name = $name AND tenure <= $tenure A
      
 ```
 
+Tokens are identified with `\$[a-zA-Z]([a-zA-Z0-9_\-]*)\b` (they must begin with a letter, and can contain only alphanumerics, underscores, and dashes.
+
 Usage
 -----
 

@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var tokenPattern = /\$[a-zA-Z]([a-zA-Z0-9]*)\b/g;
+var tokenPattern = /\$[a-zA-Z]([a-zA-Z0-9_]*)\b/g;
 
 function numericFromNamed(sql, parameters) {
   var fillableTokens = Object.keys(parameters);
