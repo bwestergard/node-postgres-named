@@ -46,6 +46,12 @@ describe('node-postgres-named', function () {
       };
       chai.expect(okayCall).not.to.throw();
     });
+
+    it('Handles word boundaries', function() {
+      var results = client.query("$a $aa", { a: 5, aa: 23 });
+      assert.deepEqual(results.values, [5, 23]);
+      assert.equal(results.sql, ["$1 $2"]);
+    });
   });
 
   describe('Monkeypatched Dispatch', function () {

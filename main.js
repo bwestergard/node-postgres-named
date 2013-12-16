@@ -20,8 +20,9 @@ function numericFromNamed(sql, parameters) {
     throw new Error("Missing Parameters: " + missing);
   }
 
-  var interpolatedSql = _.reduce(fillTokens, function (partiallyInterpolated, token, index) {
-    var replaceAllPattern = new RegExp('\\$' + fillTokens[index], "g");
+  var interpolatedSql = _.reduce(fillTokens,
+  function (partiallyInterpolated, token, index) {
+    var replaceAllPattern = new RegExp('\\$' + fillTokens[index] + '\\b', "g");
     return partiallyInterpolated
       .replace(replaceAllPattern,
                '$' + (index+1)); // PostGreSQL parameters are inexplicably 1-indexed.
