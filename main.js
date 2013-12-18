@@ -40,11 +40,15 @@ function patch (client) {
   originalQuery = originalQuery.bind(client);
 
   var patchedQuery = function(config, values, callback) {
-    if (_.isPlainObject(values)) {
+    //Handle the arity 2 case.
+    if (!callback) {
+      return originalQuery(config, values);
+    }
+    else if (_.isArray(values)) {
+      return originalQuery(config, values, callback);
+    } else {
       var reparameterized = numericFromNamed(config, values);
       return originalQuery(reparameterized.sql, reparameterized.values, callback);
-    } else {
-      return originalQuery(config, values, callback);
     }
   };
 
