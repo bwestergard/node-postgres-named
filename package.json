@@ -1,6 +1,6 @@
 {
   "name": "node-postgres-named",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": false,
   "main": "./main",
   "engines": {
