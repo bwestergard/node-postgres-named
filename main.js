@@ -40,8 +40,12 @@ function patch (client) {
   originalQuery = originalQuery.bind(client);
 
   var patchedQuery = function(config, values, callback) {
+    //Handle the arity 1 case.
+    if (!values && !callback) {
+      return originalQuery(config);
+    }
     //Handle the arity 2 case.
-    if (!callback) {
+    else if (!callback && _.isFunction(values)) {
       return originalQuery(config, values);
     }
     else if (_.isArray(values)) {
