@@ -37,6 +37,9 @@ function numericFromNamed(sql, parameters) {
 
 function patch (client) {
   var originalQuery = client.query;
+
+  if (originalQuery.patched) return client;
+  
   originalQuery = originalQuery.bind(client);
 
   var patchedQuery = function(config, values, callback) {
@@ -49,6 +52,9 @@ function patch (client) {
   };
 
   client.query = patchedQuery;
+  client.query.patched = true;
+
+  return client;
 }
 
 module.exports.patch = patch;
