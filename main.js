@@ -49,7 +49,7 @@ function patch (client) {
     else if (arguments.length === 2 && _.isFunction(values)) {
       return originalQuery(config, values);
     }
-    else if (_.isArray(values)) {
+    else if (_.isUndefined(values) || _.isNull(values) || _.isArray(values)) {
       return originalQuery(config, values, callback);
     } else {
       var reparameterized = numericFromNamed(config, values);
