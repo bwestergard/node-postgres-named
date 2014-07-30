@@ -46,4 +46,4 @@ Now both of the above call styles (with a list of values, or a dictionary of nam
 Shout Out
 ---------
 
-Big ups to [Mike 'ApeChimp' Atkins](https://github.com/apechimp) for the suggested implemention.
+Big ups to [Mike "ApeChimp" Atkins](https://github.com/apechimp) for the suggested implemention.
