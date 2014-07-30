@@ -11,7 +11,7 @@ Go from this...
 
 ```javascript
 
-client.query("SELECT name FROM person WHERE name = $1 AND tenure <= $2 AND age <= $3",
+client.query('SELECT name FROM person WHERE name = $1 AND tenure <= $2 AND age <= $3',
              ['Ursus', 2.5, 24],
              function (results) { console.log(results); });
              
@@ -21,8 +21,8 @@ to this...
 
 ```javascript
 
-client.query("SELECT name FROM person WHERE name = $name AND tenure <= $tenure AND age <= $age",
-             {'name': 'Ursus', "tenure": 2.5, "age": 24},
+client.query('SELECT name FROM person WHERE name = $name AND tenure <= $tenure AND age <= $age',
+             {'name': 'Ursus', 'tenure': 2.5, 'age': 24},
              function (results) { console.log(results); });
      
 ```
@@ -36,7 +36,7 @@ Create a client as usual, then call the patch function on it. It will be patched
 
 ```javascript
 var pg = require('pg'); 
-var named = require("node-postgres-named");
+var named = require('node-postgres-named');
 var client = new pg.Client(conString);
 named.patch(client);
 ```
