@@ -1,4 +1,5 @@
 /* globals it: false, describe: false */
+var _ = require('lodash');
 var assert = require("assert");
 var chai = require("chai");
 var named = require("../main.js");
@@ -13,6 +14,13 @@ Client.prototype.query = function(sql, values, callback) {
   out.sql = sql;
   out.values = values;
   out.callback = callback;
+
+  // prepared statement call with 2 arguments
+  if (_.isUndefined(callback) && _.isFunction(values) && _.isPlainObject(sql)) {
+    out.callback = values;
+    out.values = sql.values;
+    out.sql = sql.text;
+  }
   return out;
 };
 
@@ -82,5 +90,19 @@ describe('node-postgres-named', function () {
       assert.deepEqual(results.values, [24, "Ursus Oestergardii", 3]);
       assert.equal(callback, callback);
     });
+    it('Prepared statement call', function() {
+      var prepStmt = {
+        name   : 'select.person.byNameTenureAge',
+        text   : "SELECT name FORM person WHERE name = $name AND tenure <= $tenure AND age <= $age",
+        values : { 'name': 'Ursus Oestergardii',
+          'tenure': 3,
+          'age': 24 }
+      };
+      var callback = function () { };
+      var results = client.query(prepStmt, callback);
+      assert.equal(results.sql, 'SELECT name FORM person WHERE name = $2 AND tenure <= $3 AND age <= $1');
+      assert.deepEqual(results.values, [24, "Ursus Oestergardii", 3]);
+      assert.equal(callback, callback);
+    })
   });
 });
