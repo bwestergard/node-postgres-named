@@ -43,6 +43,13 @@ function patch (client) {
   originalQuery = originalQuery.bind(client);
 
   var patchedQuery = function(config, values, callback) {
+    var reparameterized;
+    if (_.isPlainObject(config) && _.isPlainObject(config.values)) {
+      reparameterized = numericFromNamed(config.text, config.values);
+      config.text = reparameterized.sql;
+      config.values = reparameterized.values;
+    }
+
     if (arguments.length === 1) {
       return originalQuery(config);
     }
@@ -52,7 +59,7 @@ function patch (client) {
     else if (_.isUndefined(values) || _.isNull(values) || _.isArray(values)) {
       return originalQuery(config, values, callback);
     } else {
-      var reparameterized = numericFromNamed(config, values);
+      reparameterized = numericFromNamed(config, values);
       return originalQuery(reparameterized.sql, reparameterized.values, callback);
     }
   };
