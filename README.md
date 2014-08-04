@@ -29,6 +29,18 @@ client.query('SELECT name FROM person WHERE name = $name AND tenure <= $tenure A
 
 Tokens are identified with `\$[a-zA-Z]([a-zA-Z0-9_\-]*)\b`. In other words: they must begin with a letter, and can contain only alphanumerics, underscores, and dashes.
 
+Execution of [prepared statements](https://github.com/brianc/node-postgres/wiki/Prepared-Statements) is also supported:
+
+```javascript
+client.query({
+  name   : 'select.person.byNameTenureAge',
+  text   : "SELECT name FORM person WHERE name = $name AND tenure <= $tenure AND age <= $age",
+  values : { 'name': 'Ursus Oestergardii',
+             'tenure': 3,
+             'age': 24 }
+}, function (results) { console.log(results); });
+```
+
 Usage
 -----
 
@@ -43,7 +55,7 @@ named.patch(client);
 
 Now both of the above call styles (with a list of values, or a dictionary of named parameters) will work.
 
-Shout Out
+Contributors
 ---------
 
-Big ups to [Mike "ApeChimp" Atkins](https://github.com/apechimp) for the suggested implemention.
+Inspiration provided by a conversatin with [Mike "ApeChimp" Atkins](https://github.com/apechimp). Support for prepared statements added by (nuarhu)[https://github.com/nuarhu]. Critical connection-pooling bugfix tediously diagnosed and patched by [Tony "tone81" Nguyen](https://github.com/tone81). [Mike "mfine15" Fine](https://github.com/mfine15) righted my unaesthetic mixing and matching of double and single-quotes, and [Victor Quinn](https://github.com/victorquinn) fixed a spelling error.
