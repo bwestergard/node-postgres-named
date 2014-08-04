@@ -58,4 +58,4 @@ Now both of the above call styles (with a list of values, or a dictionary of nam
 Contributors
 ---------
 
-Inspiration provided by a conversatin with [Mike "ApeChimp" Atkins](https://github.com/apechimp). Support for prepared statements added by [nuarhu](https://github.com/nuarhu). Critical connection-pooling bugfix tediously diagnosed and patched by [Tony "tone81" Nguyen](https://github.com/tone81). [Mike "mfine15" Fine](https://github.com/mfine15) righted my unaesthetic mixing and matching of double and single-quotes, and [Victor Quinn](https://github.com/victorquinn) fixed a spelling error.
+Inspiration provided by a conversatin with [Mike "ApeChimp" Atkins](https://github.com/apechimp). Support for prepared statements added by [nuarhu](https://github.com/nuarhu). Critical connection-pooling bugfix tediously diagnosed and patched by [Tony "tone81" Nguyen](https://github.com/tone81). [Mike "mfine15" Fine](https://github.com/mfine15) righted my unaesthetic mixing of double and single-quotes, and [Victor Quinn](https://github.com/victorquinn) fixed a spelling error.
