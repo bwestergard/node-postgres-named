@@ -1,9 +1,6 @@
-Synopsis
---------
+Want to use postgres with node? [node-postgres](https://github.com/brianc/node-postgres) has you covered. Want [named parameters](https://github.com/brianc/node-postgres/issues/268)?
 
-Want to use postgres with node? [node-postgres](https://github.com/brianc/node-postgres) has you covered.
-
-Want [named parameters](https://github.com/brianc/node-postgres/issues/268)? Well, postgres itself doesn't support them, and [brianc](https://github.com/brianc) has sagely opted to keep his library small and close to the postgres specification.
+Well, postgres itself doesn't support them, and [brianc](https://github.com/brianc) has sagely opted to keep his library small and close to the postgres specification.
 
 But code full of random numeric tokens (e.g. `$1`) isn't very readable. This module lets you monkeypatch [node-postgres](https://github.com/brianc/node-postgres) or [node-postgres-pure](https://github.com/brianc/node-postgres-pure) to support named parameters.
 
