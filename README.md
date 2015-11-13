@@ -1,3 +1,15 @@
+node-postgres-named
+=============
+
+Named parameters for node-postgres.
+
+[![Circle CI](https://circleci.com/gh/bwestergard/node-postgres-named/tree/master.svg?style=svg)](https://circleci.com/gh/bwestergard/node-postgres-named/tree/master)
+[![npm version](https://badge.fury.io/js/node-postgres-named.svg)](https://badge.fury.io/js/node-postgres-named)
+[![dependencies](https://david-dm.org/bwestergard/node-postgres-named.svg)](https://david-dm.org/bwestergard/node-postgres-named)
+
+Why node-postgres-named?
+------------------------
+
 Want to use postgres with node? [node-postgres](https://github.com/brianc/node-postgres) has you covered. Want [named parameters](https://github.com/brianc/node-postgres/issues/268)?
 
 Well, postgres itself doesn't support them, and [brianc](https://github.com/brianc) has sagely opted to keep his library small and close to the postgres specification.
