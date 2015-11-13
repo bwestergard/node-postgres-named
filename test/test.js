@@ -103,6 +103,6 @@ describe('node-postgres-named', function () {
       assert.equal(results.sql, 'SELECT name FORM person WHERE name = $2 AND tenure <= $3 AND age <= $1');
       assert.deepEqual(results.values, [24, "Ursus Oestergardii", 3]);
       assert.equal(callback, callback);
-    })
+    });
   });
 });
