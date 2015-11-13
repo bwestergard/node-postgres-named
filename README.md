@@ -1,5 +1,5 @@
 node-postgres-named
-=============
+===================
 
 Named parameters for node-postgres.
 
