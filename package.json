@@ -1,7 +1,7 @@
 {
   "name": "node-postgres-named",
   "description": "Named parameters for node-postgres.",
-  "version": "2.2.5",
+  "version": "2.3.0",
   "private": false,
   "main": "./main",
   "engines": {
