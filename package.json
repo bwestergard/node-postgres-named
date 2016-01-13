@@ -1,7 +1,7 @@
 {
   "name": "node-postgres-named",
   "description": "Named parameters for node-postgres.",
-  "version": "2.2.5",
+  "version": "2.4.0",
   "private": false,
   "main": "./main",
   "engines": {
@@ -10,7 +10,7 @@
     "npm": ">= 1"
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": "^4.0.0"
   },
   "repository": {
     "type": "git",
