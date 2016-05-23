@@ -17,7 +17,7 @@
     "url": "https://github.com/bwestergard/node-postgres-named.git"
   },
   "devDependencies": {
-    "mocha": "~2.4.5",
+    "mocha": "~2.5.0",
     "chai": "~3.4.1",
     "jshint": "~2.9.1-rc1"
   },
