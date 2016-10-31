@@ -10,7 +10,7 @@
     "npm": ">= 1"
   },
   "dependencies": {
-    "lodash": "^4.0.0"
+    "lodash": "^4.16.5"
   },
   "repository": {
     "type": "git",
