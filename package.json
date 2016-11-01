@@ -6,7 +6,7 @@
   "main": "./main",
   "engines": {
     "iojs": ">= 1",
-    "node": ">= 4",
+    "node": ">= 0.10",
     "npm": ">= 1"
   },
   "dependencies": {
