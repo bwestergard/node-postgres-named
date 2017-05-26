@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "mocha": "~3.1.2",
-    "chai": "~3.4.1",
+    "chai": "~4.0.0",
     "jshint": "~2.9.1-rc1"
   },
   "scripts": {
