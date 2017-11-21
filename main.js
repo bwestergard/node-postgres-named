@@ -29,7 +29,7 @@ function numericFromNamed(sql, parameters) {
   }, sql);
 
   var out = {};
-  out.sql = interpolatedSql;
+  out.text = interpolatedSql;
   out.values = fillValues;
 
   return out;
@@ -46,7 +46,7 @@ function patch (client) {
     var reparameterized;
     if (_.isPlainObject(config) && _.isPlainObject(config.values)) {
       reparameterized = numericFromNamed(config.text, config.values);
-      config.text = reparameterized.sql;
+      config.text = reparameterized.text;
       config.values = reparameterized.values;
     }
 
@@ -60,7 +60,7 @@ function patch (client) {
       return originalQuery(config, values, callback);
     } else {
       reparameterized = numericFromNamed(config, values);
-      return originalQuery(reparameterized.sql, reparameterized.values, callback);
+      return originalQuery(reparameterized.text, reparameterized.values, callback);
     }
   };
 
@@ -71,3 +71,4 @@ function patch (client) {
 }
 
 module.exports.patch = patch;
+module.exports.convert = numericFromNamed;
